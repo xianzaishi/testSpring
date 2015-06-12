@@ -1,0 +1,65 @@
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="channel">
+	<select id="queryChannel" resultClass="com.zhl.testSpring.model.Channel">
+		select id, parent, name from channel
+	</select>
+	<select id="queryParentChannelById" resultClass="com.zhl.testSpring.model.Channel" parameterClass="java.lang.Integer">
+		select id, parent, name from channel
+		<dynamic prepend="where">
+			<isNotNull prepend="and">
+					id = #parentId:INTEGER#
+			</isNotNull>
+		</dynamic>
+	</select>
+	<insert id="insertChannel" parameterClass="com.zhl.testSpring.model.Channel">
+		insert into channel (parent, name) values(#parent#, #name#)
+	</insert>
+	<select id="queryParentIdById" resultClass="com.zhl.testSpring.model.Channel" parameterClass="java.lang.Integer">
+		select id, parent, name from channel
+		<dynamic prepend="where">
+			<isNotNull prepend="and">
+					id = #channelId:INTEGER#
+			</isNotNull>
+		</dynamic>
+	</select>
+	<select id="queryForAllChannel" resultClass="com.zhl.testSpring.model.Channel">
+		select id, parent, name from channel
+	</select>
+	<update id="updateChannel" parameterClass="com.zhl.testSpring.model.Channel">
+		update channel
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="parent">
+					parent=#parent#
+	        </isNotNull>
+			<isNotNull prepend="," property="name">
+					name=#name#
+	     	</isNotNull>
+	     </dynamic>
+	     where id=#id:INTEGER#
+	</update>
+	<delete id="deleteChannel" parameterClass="com.zhl.testSpring.model.Channel">
+		delete from channel 
+		where id = #id:INTEGER#
+	</delete>
+	<select id="queryCountOfChildren" parameterClass="com.zhl.testSpring.model.Channel" resultClass="java.lang.Integer">
+		select count(id) from channel
+		where parent = #id:INTEGER#
+	</select>
+	<select id="queryContentCountByChannelId" resultClass="java.lang.Integer" parameterClass="java.lang.Integer">
+		select count(id) from content
+		where channel_id = #id:INTEGER#
+		order by id desc
+	</select>
+	<select id="queryChildrenByParentId" parameterClass="java.lang.Integer" resultClass="com.zhl.testSpring.model.Channel">
+		select id, parent, name from channel
+		where parent = #id:INTEGER#
+	</select>
+	<select id="validateUser" parameterClass="com.zhl.testSpring.model.User" resultClass="com.zhl.testSpring.model.User">
+		select id as id,
+			user_name as userName,
+			password as password,
+			email as email 
+		from user
+		where user_name = #userName# and password = #password#
+	</select>
+</sqlMap>

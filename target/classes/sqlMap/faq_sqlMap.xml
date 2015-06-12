@@ -1,0 +1,78 @@
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="faq">
+	<select id="queryQuestion" resultClass="com.zhl.testSpring.model.Question">
+		select id as id,
+			content as content,
+			create_date as createDate,
+			creator as creator
+		from question
+		order by create_date desc
+	</select>
+	<insert id="insertQuestion" parameterClass="com.zhl.testSpring.model.Question">
+		insert into question (content, create_date, creator) values (#content#, #createDate#, #creator#)
+	</insert>
+	<select id="queryQuestionCount" resultClass="java.lang.Integer">
+		select count(id) from question
+	</select>
+	<select id="queryQuestionById" resultClass="com.zhl.testSpring.model.Question" parameterClass="java.lang.Integer">
+		select id as id,
+			content as content,
+			create_date as createDate,
+			creator as creator
+		from question
+		where id = #id:INTEGER#
+	</select>
+	<select id="queryAnswerByQuestionId" parameterClass="java.lang.Integer" resultClass="com.zhl.testSpring.model.Answer">
+		select id as id,
+			question_id as questionId,
+			content as content,
+			create_date as createDate,
+			creator as creator
+		from answer
+		where question_id = #id:INTEGER#
+	</select>
+	<insert id="insertAnswer" parameterClass="com.zhl.testSpring.model.Answer">
+		insert into answer (question_id, content, create_date, creator) values (#questionId#, #content#, #createDate#, #creator#)
+	</insert>
+	<update id="updateAnswerById" parameterClass="com.zhl.testSpring.model.Answer">
+		update answer   
+      	<dynamic prepend="set">  
+          <isNotNull prepend="," property="questionId">            
+               question_id = #questionId:INTEGER#  
+           </isNotNull>  
+          <isNotNull prepend="," property="content">            
+               content = #content#  
+           </isNotNull>  
+          <isNotNull prepend="," property="createDate">            
+               create_date = #createDate#  
+           </isNotNull>  
+          <isNotNull prepend="," property="creator">            
+               creator = #creator#  
+           </isNotNull>  
+      	</dynamic>  
+     	where id=#id:INTEGER#
+	</update>
+	<select id="queryFaqDtoForPage" resultClass="com.zhl.testSpring.dto.FaqDto">
+		select q.id as id, 
+			q.content as question, 
+			a.content as answer, 
+			q.create_date as questionCreateDate, 
+			q.creator as questionCreator, 
+			a.create_date as answerCreateDate, 
+			a.creator as answerCreator
+		from answer a
+		left join question q on q.id = a.question_id
+		order by questionCreateDate desc
+	</select>
+	<select id="queryValidQuestionCount" resultClass="java.lang.Integer">
+		select count(*)
+		from answer a
+		left join question q on q.id = a.question_id
+	</select>
+	<delete id="deleteFAQ" parameterClass="java.lang.Integer">
+		delete from question where id=#id:INTEGER#
+	</delete>
+	<delete id="deleteAnswer" parameterClass="java.lang.Integer">
+		delete form answer where question_id=#id:INTEGER#
+	</delete>
+</sqlMap>

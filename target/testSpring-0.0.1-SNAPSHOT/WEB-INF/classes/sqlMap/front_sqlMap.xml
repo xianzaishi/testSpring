@@ -1,0 +1,12 @@
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="front">
+	<select id="queryLatestContent" resultClass="com.zhl.testSpring.model.Content" parameterClass="java.lang.Integer">
+		select * from content 
+		order by create_date desc  
+		<dynamic prepend ="limit">
+		    <isNotEqual compareValue="0">
+		    0,#count#
+		    </isNotEqual>
+		</dynamic> 
+	</select>
+</sqlMap>

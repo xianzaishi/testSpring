@@ -1,0 +1,141 @@
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="content">
+	<insert id="insert" parameterClass="com.zhl.testSpring.model.Content">
+		insert into content (title, content, creator, modifier, create_date, modify_date, file_upload, viewer) values (#title#, #content#, #creator#, #modifier#, #createDate#, #modifyDate#, #fileUpload#, #viewer#)
+	</insert>
+	<insert id="addContent" parameterClass="com.zhl.testSpring.model.Content">
+		insert into content 
+		(channel_id, title, brief, content, creator, modifier, create_date, modify_date, file_upload, viewer, image, top)
+		values (#channelId:INTEGER#, #title#, #brief#, #content#, #creator#, #modifier#, #createDate#, #modifyDate#, #fileUpload#, #viewer#, #image#, #top#)
+	</insert>
+	<select id="queryContent" resultClass="com.zhl.testSpring.model.Content">
+		select id as id, 
+			channel_id as channelId,
+			title as title, 
+			brief as brief, 
+			content as content, 
+			creator as creator, 
+			modifier as modifier, 
+			create_date as createDate, 
+			modify_date as modifyDate, 
+			file_upload as fileUpload, 
+			viewer as viewer,
+			image as image,
+			top as top
+		from content
+		order by modify_date desc
+	</select>
+	<select id="queryContentCount" resultClass="java.lang.Integer">
+		select count(id) from content order by id desc
+	</select>
+	<select id="queryContentByChannelId" resultClass="com.zhl.testSpring.model.Content" parameterClass="java.lang.Integer">
+		select id as id, 
+			channel_id as channelId, 
+			title as title, 
+			brief as brief, 
+			content as content, 
+			creator as creator, 
+			modifier as modifier, 
+			create_date as createDate, 
+			modify_date as modifyDate, 
+			file_upload as fileUpload, 
+			viewer as viewer 
+		from content
+		where channel_id = #id:INTEGER#
+		order by modify_date desc
+	</select>
+	<select id="queryContentCountByChannelId" resultClass="java.lang.Integer" parameterClass="java.lang.Integer">
+		select count(id) from content
+		where channel_id = #id:INTEGER#
+		order by id desc
+	</select>
+	<delete id="deleteContentById" parameterClass="java.lang.Integer">
+		delete from content
+		where id = #id:INTEGER#
+	</delete>
+	<select id="queryContentById" resultClass="com.zhl.testSpring.model.Content" parameterClass="java.lang.Integer">
+		select id as id, 
+			channel_id as channelId, 
+			title as title, 
+			brief as brief, 
+			content as content, 
+			creator as creator, 
+			modifier as modifier, 
+			create_date as createDate, 
+			modify_date as modifyDate, 
+			file_upload as fileUpload, 
+			viewer as viewer,
+			image as image,
+			top as top
+		from content
+		where id = #id:INTEGER#
+	</select>
+	<select id="queryFileById" resultClass="com.zhl.testSpring.model.FileUpload" parameterClass="java.lang.Integer">
+		select id, path from file_upload
+		where id = #id:INTEGER#
+	</select>
+	<update id="updateContentById" parameterClass="com.zhl.testSpring.model.Content">
+		update content   
+      	<dynamic prepend="set">  
+          <isNotNull prepend="," property="channelId">            
+               channel_id = #channelId:INTEGER#  
+           </isNotNull>  
+          <isNotNull prepend="," property="title">            
+               title = #title#  
+           </isNotNull>  
+          <isNotNull prepend="," property="brief">            
+               brief = #brief#  
+           </isNotNull>  
+          <isNotNull prepend="," property="content">            
+               content = #content#  
+           </isNotNull>  
+          <isNotNull prepend="," property="creator">            
+               creator = #creator#  
+           </isNotNull>  
+          <isNotNull prepend="," property="modifier">            
+               modifier = #modifier#  
+           </isNotNull>  
+          <isNotNull prepend="," property="createDate">            
+               create_date = #createDate#  
+           </isNotNull>  
+          <isNotNull prepend="," property="modifyDate">            
+               modify_date = #modifyDate#  
+           </isNotNull>  
+          <isNotNull prepend="," property="fileUpload">            
+               file_upload = #fileUpload#  
+           </isNotNull>  
+          <isNotNull prepend="," property="viewer">            
+               viewer = #viewer#  
+           </isNotNull>  
+          <isNotNull prepend="," property="image">            
+               image = #image#  
+           </isNotNull>  
+          <isNotNull prepend="," property="top">            
+               top = #top#  
+           </isNotNull>  
+      	</dynamic>  
+     	where id=#id:INTEGER#
+	</update>
+	<update id="updateContentImage" parameterClass="com.zhl.testSpring.model.Content">
+		update content   
+      	<dynamic prepend="set">  
+          <isNotNull prepend=","  property="image">
+          	image = #image#
+          </isNotNull>
+    	</dynamic>
+    	where id = #id:INTEGER#
+	</update>
+	<update id="updateContentTop" parameterClass="java.lang.Integer">
+		update content
+		set top = 1
+		where id = #id:INTEGER#
+	</update>
+	<update id="updateContentUntop" parameterClass="java.lang.Integer">
+		update content
+		set top = 0
+		where id = #id:INTEGER#
+	</update>
+</sqlMap>
+
+
+

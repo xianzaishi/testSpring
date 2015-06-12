@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+	<!-- 主页模板 -->
+    <definition name="eryuan.base" template="/WEB-INF/pages/commons/eryuan/layouts.jsp">
+        <put-attribute name="head" value="/WEB-INF/pages/commons/eryuan/head.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/pages/commons/eryuan/body.jsp"/>
+        <put-attribute name="foot" value="/WEB-INF/pages/commons/eryuan/foot.jsp"/>
+    </definition> 
+    
+	<!-- 工会主页模板 -->
+    <definition name="eryuanLaborUnion.base" template="/WEB-INF/pages/commons/eryuan/laborUnion/layouts.jsp">
+        <put-attribute name="head" value="/WEB-INF/pages/commons/eryuan/laborUnion/head.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/pages/commons/eryuan/body.jsp"/>
+        <put-attribute name="foot" value="/WEB-INF/pages/commons/eryuan/laborUnion/foot.jsp"/>
+    </definition> 
+    
+    <!-- 二级页面模板 -->
+    <definition name="eryuan.second" template="/WEB-INF/pages/commons/eryuan/secondLayouts.jsp">
+        <put-attribute name="head" value="/WEB-INF/pages/commons/eryuan/head.jsp"/>
+        <put-attribute name="left" value="/WEB-INF/pages/commons/left.jsp"/>
+        <put-attribute name="right" value="/WEB-INF/pages/commons/right.jsp"/>
+        <put-attribute name="foot" value="/WEB-INF/pages/commons/eryuan/foot.jsp"/>
+    </definition> 
+    
+    <!-- 工会二级页面模板 -->
+    <definition name="eryuanLaborUnion.second" template="/WEB-INF/pages/commons/eryuan/secondLayouts.jsp">
+        <put-attribute name="head" value="/WEB-INF/pages/commons/eryuan/laborUnion/head.jsp"/>
+        <put-attribute name="left" value="/WEB-INF/pages/commons/eryuan/laborUnion/left.jsp"/>
+        <put-attribute name="right" value="/WEB-INF/pages/commons/right.jsp"/>
+        <put-attribute name="foot" value="/WEB-INF/pages/commons/eryuan/laborUnion/foot.jsp"/>
+    </definition> 
+    
+    <!-- 主页 -->
+    <definition name="eryuanIndexView" extends="eryuan.base">
+    	<put-attribute name="body" value="/WEB-INF/pages/cms/eryuan/index.jsp"/>
+    </definition>
+    
+    <!-- 工会主页 -->
+    <definition name="eryuanLaborUnionIndexView" extends="eryuanLaborUnion.base">
+    	<put-attribute name="body" value="/WEB-INF/pages/cms/eryuan/laborUnion/index.jsp"/>
+    </definition>
+    
+    <!-- 二级页面 -->
+    <definition name="eryuanContentListView" extends="eryuan.second">
+    	<put-attribute name="left" value="/WEB-INF/pages/cms/eryuan/left.jsp"/>
+    	<put-attribute name="right" value="/WEB-INF/pages/cms/eryuan/contentList.jsp"/>
+    </definition>
+    
+    <!-- 工会二级页面 -->
+    <definition name="eryuanLaborUnionContentListView" extends="eryuanLaborUnion.second">
+    	<put-attribute name="right" value="/WEB-INF/pages/cms/eryuan/laborUnion/contentList.jsp"/>
+    </definition>
+    
+    <!-- 工会三级页面 -->
+    <definition name="eryuanLaborUnionContentView" extends="eryuanLaborUnion.second">
+    	<put-attribute name="right" value="/WEB-INF/pages/cms/eryuan/laborUnion/content.jsp"/>
+    </definition>
+    
+    <!-- 专家页面 -->
+    <definition name="eryuanSpecialContentListView" extends="eryuan.second">
+    	<put-attribute name="left" value="/WEB-INF/pages/cms/eryuan/left.jsp"/>
+    	<put-attribute name="right" value="/WEB-INF/pages/cms/eryuan/specialContentList.jsp"/>
+    </definition>
+    
+    <!-- 科室特色页面 -->
+    <definition name="eryuanDeptContentListView" extends="eryuan.second">
+    	<put-attribute name="left" value="/WEB-INF/pages/cms/eryuan/left.jsp"/>
+    	<put-attribute name="right" value="/WEB-INF/pages/cms/eryuan/deptContentList.jsp"/>
+    </definition>
+    
+    <!-- 详细内容页面 -->
+    <definition name="eryuanContentDetailView" extends="eryuan.second">
+    	<put-attribute name="left" value="/WEB-INF/pages/cms/eryuan/left.jsp"/>
+    	<put-attribute name="right" value="/WEB-INF/pages/cms/eryuan/content.jsp"/>
+    </definition>
+    
+    <!-- 医院地图页面 -->
+    <definition name="eryuanMapView" extends="eryuan.second">
+    	<put-attribute name="left" value="/WEB-INF/pages/cms/eryuan/left.jsp"/>
+    	<put-attribute name="right" value="/WEB-INF/pages/cms/eryuan/map.jsp"/>
+    </definition>
+    
+    <!-- FAQ前台页面 -->
+    <definition name="eryuanFaqView" extends="eryuan.second">
+    	<put-attribute name="left" value="/WEB-INF/pages/cms/eryuan/left.jsp"/>
+    	<put-attribute name="right" value="/WEB-INF/pages/cms/eryuan/faq.jsp"/>
+    </definition>
+    
+    <!-- FAQ提示审核页面 -->
+    <definition name="eryuanFaqAuditView" extends="eryuan.second">
+    	<put-attribute name="left" value="/WEB-INF/pages/cms/eryuan/left.jsp"/>
+    	<put-attribute name="right" value="/WEB-INF/pages/cms/eryuan/message.jsp"/>
+    </definition>
+</tiles-definitions>

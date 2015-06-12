@@ -1,0 +1,21 @@
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="file">
+	<insert id="fileUpload" parameterClass="com.zhl.testSpring.model.FileUpload">
+		insert into file_upload (path, real_path) values (#path#, #realPath#)
+	</insert>
+	<select id="queryIdByPath" parameterClass="com.zhl.testSpring.model.FileUpload" resultClass="java.lang.Integer">
+		select id from file_upload
+		where path = #path#
+	</select>
+	<insert id="imagesUpload" parameterClass="com.zhl.testSpring.model.Images">
+		insert into images (path) values (#path#)
+	</insert>
+	<select id="queryImagesIdByPath" parameterClass="com.zhl.testSpring.model.Images" resultClass="java.lang.Integer">
+		select id from images
+		where path = #path#
+	</select>
+	<select id="queryFilePathById" parameterClass="java.lang.Integer" resultClass="java.lang.String">
+		select path from file_upload
+		where id = #id:INTEGER#
+	</select>
+</sqlMap>

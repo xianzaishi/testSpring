@@ -1,0 +1,289 @@
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="eryuan">
+	<select id="queryNoticeTop" resultClass="com.zhl.testSpring.model.Content">
+		select id as id, 
+			channel_id as channelId,
+			title as title, 
+			brief as brief, 
+			content as content, 
+			creator as creator, 
+			modifier as modifier, 
+			create_date as createDate, 
+			modify_date as modifyDate, 
+			file_upload as fileUpload, 
+			viewer as viewer,
+			image as image,
+			top as top 
+		from content 
+		where channel_id = 20 and top = 1
+		order by create_date desc
+		limit 10
+	</select>
+	<select id="queryLaborNoticeTop" resultClass="com.zhl.testSpring.model.Content">
+		select id as id, 
+			channel_id as channelId,
+			title as title, 
+			brief as brief, 
+			content as content, 
+			creator as creator, 
+			modifier as modifier, 
+			create_date as createDate, 
+			modify_date as modifyDate, 
+			file_upload as fileUpload, 
+			viewer as viewer,
+			image as image,
+			top as top 
+		from content 
+		where channel_id = 52 and top = 1
+		order by create_date desc
+		limit 10
+	</select>
+	<select id="queryTopSix" resultClass="com.zhl.testSpring.model.Content" parameterClass="java.lang.Integer">
+		select id as id, 
+			channel_id as channelId,
+			title as title, 
+			brief as brief, 
+			content as content, 
+			creator as creator, 
+			modifier as modifier, 
+			create_date as createDate, 
+			modify_date as modifyDate, 
+			file_upload as fileUpload, 
+			viewer as viewer,
+			image as image,
+			top as top 
+		from content 
+		where channel_id = #channelId:INTEGER# and top = 1
+		order by create_date desc
+		limit 6
+	</select>
+	<select id="queryNewsTop" resultClass="com.zhl.testSpring.model.Content">
+		select id as id, 
+			channel_id as channelId,
+			title as title, 
+			brief as brief, 
+			content as content, 
+			creator as creator, 
+			modifier as modifier, 
+			create_date as createDate, 
+			modify_date as modifyDate, 
+			file_upload as fileUpload, 
+			viewer as viewer,
+			image as image,
+			top as top 
+		from content 
+		where channel_id = 21 and top = 1
+		order by create_date desc
+		limit 6
+	</select>
+	<select id="queryNewsPicTop" resultClass="com.zhl.testSpring.model.Content">
+		select c.id as id, 
+			c.channel_id as channelId,
+			c.title as title, 
+			c.brief as brief, 
+			c.content as content, 
+			c.creator as creator, 
+			c.modifier as modifier, 
+			c.create_date as createDate, 
+			c.modify_date as modifyDate, 
+			c.file_upload as fileUpload, 
+			c.viewer as viewer,
+			f.path as image,
+			c.top as top
+		from content c
+		left join file_upload f on c.image = f.id  
+		where c.channel_id = 22 and c.top = 1
+		order by c.create_date desc
+		limit 7
+	</select>
+	<select id="queryLaborNewsPicTop" resultClass="com.zhl.testSpring.model.Content">
+		select c.id as id, 
+			c.channel_id as channelId,
+			c.title as title, 
+			c.brief as brief, 
+			c.content as content, 
+			c.creator as creator, 
+			c.modifier as modifier, 
+			c.create_date as createDate, 
+			c.modify_date as modifyDate, 
+			c.file_upload as fileUpload, 
+			c.viewer as viewer,
+			f.path as image,
+			c.top as top
+		from content c
+		left join file_upload f on c.image = f.id  
+		where c.channel_id = 53 and c.top = 1
+		order by c.create_date desc
+		limit 7
+	</select>
+	<select id="queryPartyTop" resultClass="com.zhl.testSpring.model.Content">
+		select c.id as id, 
+			c.channel_id as channelId,
+			c.title as title, 
+			c.brief as brief, 
+			c.content as content, 
+			c.creator as creator, 
+			c.modifier as modifier, 
+			c.create_date as createDate, 
+			c.modify_date as modifyDate, 
+			c.file_upload as fileUpload, 
+			c.viewer as viewer,
+			f.path as image,
+			c.top as top
+		from content c
+		left join file_upload f on c.image = f.id  
+		where c.channel_id = 23 and c.top = 1
+		order by c.create_date desc
+		limit 3
+	</select>
+	<select id="queryHealthyTop" resultClass="com.zhl.testSpring.model.Content">
+		select c.id as id, 
+			c.channel_id as channelId,
+			c.title as title, 
+			c.brief as brief, 
+			c.content as content, 
+			c.creator as creator, 
+			c.modifier as modifier, 
+			c.create_date as createDate, 
+			c.modify_date as modifyDate, 
+			c.file_upload as fileUpload, 
+			c.viewer as viewer,
+			f.path as image,
+			c.top as top
+		from content c
+		left join file_upload f on c.image = f.id  
+		where c.channel_id = 24 and c.top = 1
+		order by c.create_date desc
+		limit 2
+	</select>
+	<select id="queryVideoTop" resultClass="com.zhl.testSpring.model.Content">
+		select c.id as id, 
+			c.channel_id as channelId,
+			c.title as title, 
+			c.brief as brief, 
+			c.content as content, 
+			c.creator as creator, 
+			c.modifier as modifier, 
+			c.create_date as createDate, 
+			c.modify_date as modifyDate, 
+			c.file_upload as fileUpload, 
+			c.viewer as viewer,
+			f.path as image,
+			c.top as top
+		from content c
+		left join file_upload f on c.image = f.id  
+		where c.channel_id = 25 and c.top = 1
+		order by c.create_date desc
+		limit 1
+	</select>
+	<select id="queryContentListByChannelId" resultClass="com.zhl.testSpring.model.Content" parameterClass="java.lang.Integer">
+		select id as id, 
+			channel_id as channelId,
+			title as title, 
+			brief as brief, 
+			content as content, 
+			creator as creator, 
+			modifier as modifier, 
+			create_date as createDate, 
+			modify_date as modifyDate, 
+			file_upload as fileUpload, 
+			viewer as viewer,
+			image as image,
+			top as top 
+		from content
+		where channel_id = #channelId:Integer#
+		order by create_date desc
+	</select>
+	<select id="queryContentCountByChannelId" resultClass="java.lang.Integer" parameterClass="java.lang.Integer">
+		select count(*)
+		from content
+		where channel_id = #channelId:Integer#
+	</select>
+	<select id="queryParentCountByChannelId" resultClass="java.lang.Integer" parameterClass="java.lang.Integer">
+		select count(*) 
+		from channel
+		where parent = #channelId:Integer#
+	</select>
+	<select id="queryChannelNameById" resultClass="java.lang.String" parameterClass="java.lang.Integer">
+		select name from channel
+		where id = #id:Integer#
+	</select>
+	<select id="queryPicByChannelId" resultClass="com.zhl.testSpring.model.Content" parameterClass="java.lang.Integer">
+		select c.id as id, 
+			c.channel_id as channelId,
+			c.title as title, 
+			c.brief as brief, 
+			c.content as content, 
+			c.creator as creator, 
+			c.modifier as modifier, 
+			c.create_date as createDate, 
+			c.modify_date as modifyDate, 
+			c.file_upload as fileUpload, 
+			c.viewer as viewer,
+			f.path as image,
+			c.top as top
+		from content c
+		left join file_upload f on c.image = f.id  
+		where c.channel_id = #channelId:Integer#
+		order by c.create_date desc
+	</select>
+	<select id="queryContentPicById" resultClass="com.zhl.testSpring.model.Content" parameterClass="java.lang.Integer">
+		select  c.id as id, 
+			c.channel_id as channelId,
+			c.title as title, 
+			c.brief as brief, 
+			c.content as content, 
+			c.creator as creator, 
+			c.modifier as modifier, 
+			c.create_date as createDate, 
+			c.modify_date as modifyDate, 
+			c.file_upload as fileUpload, 
+			c.viewer as viewer,
+			f.path as image,
+			c.top as top
+		from content c
+		left join file_upload f on c.image = f.id  
+		where id = #id:Integer#
+		order by c.create_date desc
+	</select>
+	<select id="queryLaborUnionWonderfulPicTop" resultClass="com.zhl.testSpring.model.Content">
+		select c.id as id, 
+			c.channel_id as channelId,
+			c.title as title, 
+			c.brief as brief, 
+			c.content as content, 
+			c.creator as creator, 
+			c.modifier as modifier, 
+			c.create_date as createDate, 
+			c.modify_date as modifyDate, 
+			c.file_upload as fileUpload, 
+			c.viewer as viewer,
+			f.path as image,
+			c.top as top
+		from content c
+		left join file_upload f on c.image = f.id  
+		where c.channel_id = 59 and c.top = 1
+		order by c.create_date desc
+		limit 8
+	</select>
+	<select id="queryExpertPicTop" resultClass="com.zhl.testSpring.model.Content">
+		select c.id as id, 
+			c.channel_id as channelId,
+			c.title as title, 
+			c.brief as brief, 
+			c.content as content, 
+			c.creator as creator, 
+			c.modifier as modifier, 
+			c.create_date as createDate, 
+			c.modify_date as modifyDate, 
+			c.file_upload as fileUpload, 
+			c.viewer as viewer,
+			f.path as image,
+			c.top as top
+		from content c
+		left join file_upload f on c.image = f.id  
+		left join channel cc on cc.parent in (90) <!-- 168,169,170 -->
+		where c.channel_id = cc.id and c.top = 1
+		order by c.create_date desc
+	</select>
+</sqlMap>

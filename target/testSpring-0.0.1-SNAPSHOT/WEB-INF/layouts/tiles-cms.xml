@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+	<!-- 后台模板 -->
+    <definition name="cms.base" template="/WEB-INF/pages/commons/layouts.jsp">
+        <put-attribute name="head" value="/WEB-INF/pages/commons/head.jsp"/>
+        <put-attribute name="left" value="/WEB-INF/pages/commons/left.jsp"/>
+        <put-attribute name="right" value="/WEB-INF/pages/commons/right.jsp"/>
+        <put-attribute name="foot" value="/WEB-INF/pages/commons/foot.jsp"/>
+    </definition> 
+    
+    <!-- 前台模板 -->
+    <definition name="front.base" template="/WEB-INF/pages/commons/front_end/layouts.jsp">
+        <put-attribute name="head" value="/WEB-INF/pages/commons/front_end/head.jsp"/>
+        <put-attribute name="content" value="/WEB-INF/pages/commons/front_end/index.jsp"/>
+        <put-attribute name="foot" value="/WEB-INF/pages/commons/front_end/foot.jsp"/>
+    </definition> 
+    
+    <!-- 前台主页 -->
+    <definition name="frontIndexView" extends="front.base">
+        <put-attribute name="content" value="/WEB-INF/pages/cms/front-end/index.jsp"/>
+    </definition>
+    
+    <!-- 登陆页面 -->
+    <definition name="loginView" template="/WEB-INF/pages/cms/back-end/login.jsp">
+    </definition>
+    
+    <!-- 登陆页面 -->
+    <definition name="secondLoginView" template="/WEB-INF/pages/cms/back-end/secondLogin.jsp">
+    </definition>
+    
+    <!-- 内容管理主页 -->
+    <definition name="indexView" extends="cms.base">
+        <put-attribute name="right" value="/WEB-INF/pages/index.jsp"/>
+    </definition>
+    
+    <!-- FAQ管理页面 -->
+    <definition name="faqManageView" extends="cms.base">
+        <put-attribute name="right" value="/WEB-INF/pages/cms/back-end/faqManage.jsp"/>
+    </definition>
+    
+    <!-- FAQ回复页面 -->
+    <definition name="faqReplyView" template="/WEB-INF/pages/cms/back-end/faq/reply.jsp">
+    </definition>
+    
+    <!-- FAQ消息页面 -->
+    <definition name="faqMessageView" template="/WEB-INF/pages/cms/back-end/faq/message.jsp">
+    </definition>
+    
+    <!-- 添加内容 -->
+    <definition name="addContentView" template="/WEB-INF/pages/cms/back-end/content/add.jsp">
+    </definition>  
+    
+    <!-- 编辑内容 -->
+    <definition name="editContentView" template="/WEB-INF/pages/cms/back-end/content/edit.jsp">
+    </definition>  
+    
+    <!-- cms主页 -->
+    <definition name="cmsIndexView" extends="cms.base">
+        <put-attribute name="right" value="/WEB-INF/pages/cms/back-end/index.jsp"/>
+    </definition>  
+    
+    <!-- 添加频道 -->
+    <definition name="addChannelView" template="/WEB-INF/pages/cms/back-end/channel/add.jsp">
+    </definition>  
+    
+    <!-- 编辑频道 -->
+    <definition name="editChannelView" template="/WEB-INF/pages/cms/back-end/channel/edit.jsp">
+    </definition>  
+    
+    <!-- 内容预览 -->
+    <definition name="contentPreviewView" template="/WEB-INF/pages/cms/front-end/content.jsp">
+    </definition>  
+    
+    <!-- 404 -->
+    <definition name="errorView" template="/WEB-INF/pages/404.jsp">
+    </definition>  
+</tiles-definitions>

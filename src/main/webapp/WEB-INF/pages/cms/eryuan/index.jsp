@@ -515,7 +515,8 @@ stepcarousel.setup({
 													</a>
 												</th>
 												<th scope="col" align="center" valign="middle">
-													<a href="${contextPath}/content/detail/contentId/475">
+													<!-- <a href="${contextPath}/content/detail/contentId/475"> -->
+													<a href="http://fck.cfdeyy.com/">
 														<img src="${contextPath}/images/eryuan/cfsdeyy_43.gif" height="80" width="91" border="0" />
 													</a>
 												</th>

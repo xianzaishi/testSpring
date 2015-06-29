@@ -139,10 +139,10 @@ $(function(){
 	//编辑
 	$("#editContentButton").click(function(){
 		// 表单验证
-		if($("#title").val().trim() == undefined || "" == $("#title").val().trim()){
+		if($.trim($("#title").val()) == ""){
 			alert("标题不能为空");
 			return 0;
-		}else if($("#brief").val().trim() == undefined || "" == $("#brief").val().trim()){
+		}else if($.trim($("#brief").val()) == ""){
 			alert("摘要不能为空");
 			return 0;
 		}else if(ckeditor.getData() == ""){

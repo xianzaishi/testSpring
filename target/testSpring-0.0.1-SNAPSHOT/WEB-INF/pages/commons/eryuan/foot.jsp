@@ -47,9 +47,7 @@
 				<a href="javascript:void(0)" target="_blank" class="lv11">管理</a><br/>
 				急救中心：0476-8221221 院办：0476-8227717 投诉电话：0476-8226145 蒙ICP备05046990号<br/>
 				制作维护：<a href="javascript:void(0)" target="_blank" class="lv11">赤峰市第二医院</a>
-				电话：0476-8228629 &nbsp;&nbsp;&nbsp;&nbsp;您是第
-				<script src="http://counter.west263.com/counter.asp?name=xianzaishi&ys=19&hidden=1"></script>
-				位访问者&nbsp;&nbsp;&nbsp;&nbsp;
+				电话：0476-8228629 &nbsp;&nbsp;&nbsp;&nbsp;
 				<a href="${contextPath}/cms/login" target="_self" class="lv11">后台登陆</a>
 				</td>
 			<th scope="col" align="left" valign="middle" width="314">

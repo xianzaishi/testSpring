@@ -765,7 +765,7 @@
 								<tr>
 									<th scope="col" height="200" valign="top"
 										background="${contextPath}/images/eryuan/laborUnion/zjbg.jpg">
-									<marquee scrollamount="4" onmouseover="this.stop()" onmouseout="this.start()" direction="left" width="350">
+									<marquee scrollamount="4" onmouseover="this.stop()" onmouseout="this.start()" direction="up" width="350">
 									<table border="0" cellpadding="6"
 										cellspacing="0">
 											<!--
@@ -778,16 +778,16 @@
 											<tr>
 											-->
 											<!-- 精彩图片 start -->
+											<c:forEach items="${wonderfulPicList }" var="wonderfulPicList">
 											<tr>
-												<c:forEach items="${wonderfulPicList }" var="wonderfulPicList">
 												<td scope="col" align="center" valign="middle">
 													<a href="${contextPath}/labor/union/content/detail/contentId/${wonderfulPicList.id }">
 														<img src="${contextPath}${wonderfulPicList.image }" title="${wonderfulPicList.title }" height="155" width="230" border="0" />
 													</a>
 													<div>${wonderfulPicList.title }</div>
 												</td>
-												</c:forEach>
 											<tr>
+											</c:forEach>
 											<!-- 精彩图片 end -->
 									</table>
 									</marquee>

@@ -54,7 +54,13 @@ stepcarousel.setup({
    overflow: hidden;
   }
 </style>
-
+<!-- ---------------------------------悬浮窗开始--------------------------------- -->
+<div id="oImg" style="position: absolute; z-index: 100; top: 0; left: 0; width: 459px; height: 183px; background: #FF9900; color: #FFFFFF;">
+	<a href="${contextPath}/content/list/channelId/271/page/1"> 
+		<img src="${contextPath}/images/eryuan/xuanFuChuang.jpg" width="459px" height="183px" /> 
+	</a>
+</div> 
+<!-- ---------------------------------悬浮窗结束--------------------------------- -->
 <table align="center" height="231" width="960" border="0" cellpadding="0" cellspacing="0">
 	<tbody>
 		<tr>
@@ -301,8 +307,9 @@ stepcarousel.setup({
 				<tbody>
 					<tr>
 						<td style="font-size: 9pt; line-height: 150%" align="center">
-							<a href="javascript:void(0)" title="党建图片"> 
-								<img src="${contextPath}/images/eryuan/2011123105754528.jpg" height="100" width="960" border="0" /> 
+							<a href="${contextPath}/content/list/channelId/272/page/1" title="创建全国文明城市"> 
+								<!-- <img src="${contextPath}/images/eryuan/2011123105754528.jpg" height="100" width="960" border="0" /> --> 
+								<img src="${contextPath}/images/eryuan/wenMingCheng.jpg" height="100" width="960" border="0" /> 
 							</a>
 						</td>
 						<td align="left" valign="top"></td>
@@ -471,44 +478,45 @@ stepcarousel.setup({
 											<tr>
 											<!-- 科室特色 start -->
 												<th scope="col" align="center" height="94" valign="middle">
-													<a href="${contextPath}/content/list/channelId/225/page/1">
+													<a href="${contextPath}/content/detail/contentId/466">
 														<img src="${contextPath}/images/eryuan/cfsdeyy_28.gif" height="82" width="91" border="0" />
 													</a>
 												</th>
 												<th scope="col" align="center" valign="middle">
-													<a href="${contextPath}/content/list/channelId/226/page/1">
+													<a href="${contextPath}/content/detail/contentId/467">
 														<img src="${contextPath}/images/eryuan/cfsdeyy_30.gif" height="82" width="92" border="0" />
 													</a>
 												</th>
 												<th scope="col" align="center" valign="middle">
-													<a href="${contextPath}/content/list/channelId/171/page/1">
+													<a href="${contextPath}/content/detail/contentId/443">
 														<img src="${contextPath}/images/eryuan/cfsdeyy_520.gif" height="82" width="90" border="0" />
 													</a>
 												</th>
 												<th scope="col" align="center" valign="middle">
-													<a href="${contextPath}/content/list/channelId/175/page/1">
+													<a href="${contextPath}/content/detail/contentId/446">
 														<img src="${contextPath}/images/eryuan/cfsdeyy_34.gif" height="82" width="91" border="0" />
 													</a>
 												</th>
 											</tr>
 											<tr>
 												<th scope="col" align="center" valign="middle">
-													<a href="${contextPath}/content/list/channelId/173/page/1">
+													<a href="${contextPath}/content/detail/contentId/444">
 														<img src="${contextPath}/images/eryuan/cfsdeyy_40.gif" height="80" width="91" border="0" />
 													</a>
 												</th>
 												<th scope="col" align="center" valign="middle">
-													<a href="${contextPath}/content/list/channelId/228/page/1">
+													<a href="${contextPath}/content/detail/contentId/469">
 														<img src="${contextPath}/images/eryuan/cfsdeyy_41.gif" height="80" width="92" border="0" />
 													</a>
 												</th>
 												<th scope="col" align="center" valign="middle">
-													<a href="${contextPath}/content/list/channelId/197/page/1">
+													<a href="${contextPath}/content/detail/contentId/574">
 														<img src="${contextPath}/images/eryuan/cfsdeyy_42.gif" height="80" width="90" border="0" />
 													</a>
 												</th>
 												<th scope="col" align="center" valign="middle">
-													<a href="${contextPath}/content/list/channelId/234/page/1">
+													<!-- <a href="${contextPath}/content/detail/contentId/475"> -->
+													<a href="http://fck.cfdeyy.com/">
 														<img src="${contextPath}/images/eryuan/cfsdeyy_43.gif" height="80" width="91" border="0" />
 													</a>
 												</th>
@@ -1289,4 +1297,70 @@ stepcarousel.setup({
 			}
 		});
 	});
+	
+	
+	<!-- 
+	//---------------------------------悬浮窗开始---------------------------------
+    var floatImg = document.getElementById("oImg");  
+    var delay = 10; //控制每次执行间隔的时间，做越大移动得越慢； 
+    var speed = 1; //控制每次执行移动的距离，值越大移动得越快； 
+    var flagX = 0; 
+    var flagY = 0; 
+     
+    function toPixel(str1) { 
+    //该函数用于去掉数值后面的px，并将之转化为数字。 
+        var oldLen = str1.length; 
+        var newLen = oldLen - 2; 
+         
+        str2 = str1.slice(0, newLen); 
+        str3 = parseInt(str2); 
+         
+        return str3; 
+    } 
+     
+    function flowImg() { 
+        var bWidth = document.body.clientWidth; 
+        var bHeight = document.body.clientHeight; 
+        var bLeft = document.body.scrollLeft; 
+        var bTop = document.body.scrollTop; 
+         
+        var iWidth = floatImg.offsetWidth; 
+        var iHeight = floatImg.offsetHeight; 
+        var iLeft = toPixel(floatImg.style.left); 
+        var iTop = toPixel(floatImg.style.top); 
+         
+        //下面一段控制横向移动 
+        if(iLeft < (bWidth - iWidth) && flagX == 0) { 
+            floatImg.style.left = (iLeft + speed) + "px"; 
+        } 
+        else if(iLeft >= (bWidth - iWidth) && flagX ==0) { 
+            flagX = 1; 
+        } 
+        else if(iLeft > 0 && flagX == 1) { 
+            floatImg.style.left = (iLeft - speed) + "px"; 
+        } 
+        else if(0 >= iLeft && flagX == 1) { 
+            flagX = 0; 
+        } 
+         
+        //下面一段控制纵向移动 
+        if(iTop < (bHeight - iHeight) && flagY == 0) { 
+            floatImg.style.top = (iTop + speed) + "px"; 
+        } 
+        else if(iTop >= (bHeight - iHeight) && flagY ==0) { 
+            flagY = 1; 
+        } 
+        else if(iTop > 0 && flagY == 1) { 
+            floatImg.style.top = (iTop - speed) + "px"; 
+        } 
+        else if(0 >= iTop && flagY == 1) { 
+            flagY = 0; 
+        } 
+    } 
+     
+    var imgInterval = setInterval("flowImg()", delay); 
+    floatImg.onmouseover = function() {clearInterval(imgInterval);} 
+    floatImg.onmouseout = function() {imgInterval = setInterval("flowImg()", delay);} 
+  //---------------------------------悬浮窗结束---------------------------------
+-->
 </script>

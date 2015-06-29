@@ -164,21 +164,45 @@ body{font:12px/180% Arial, Helvetica, sans-serif;}
 	</tbody>
 </table>
 <script type="text/javascript">
+function isValid(p) {  
+	  
+    p = p.toUpperCase();  
+  
+    if (p.indexOf("DELETE") >= 0 || p.indexOf("ASCII") >= 0  
+        || p.indexOf("UPDATE") >= 0 || p.indexOf("SELECT") >= 0  
+        || p.indexOf("'") >= 0 || p.indexOf("SUBSTR(") >= 0  
+        || p.indexOf("COUNT(") >= 0 || p.indexOf(" OR ") >= 0  
+        || p.indexOf(" AND ") >= 0 || p.indexOf("DROP") >= 0  
+        || p.indexOf("EXECUTE") >= 0 || p.indexOf("EXEC") >= 0  
+        || p.indexOf("TRUNCATE") >= 0 || p.indexOf("INTO") >= 0  
+        || p.indexOf("DECLARE") >= 0 || p.indexOf("MASTER") >= 0  
+        ) {  
+  
+        logger.error("未能通过过滤器：p=" + p);  
+  
+        return false;  
+    }  
+    return true;  
+}  
 $(function(){
 	//提交问题
 	$('#submitQuestion').click(function(){
 		var text = $('#textQuestion').val();
 		text = text.replace(/(^s*)|(s*$)/g, "");  //ie不支持trim()
+		text = text.replace(/<script.*?>.*?<\/script>/ig, '');  
 		var creator = $('#creator').val();
 		creator = creator.replace(/(^s*)|(s*$)/g, "");  //ie不支持trim()
 		if(creator == ""){
 			creator = "匿名用户";
 		}
+		var isvalid = isValid(text);
+		
 		if(text != ""){
 			text = "Q:" + text;
-			$('#textQuestion').val(text);
 			var url = "${contextPath}/faq/submit";
 			$("#faqForm").attr("action", url);
+			$('#textQuestion').val(text);
+			$('#textQuestion').attr("readonly", true);
 			$("#faqForm").submit();
 		}else{
 			alert("问题不能为空");

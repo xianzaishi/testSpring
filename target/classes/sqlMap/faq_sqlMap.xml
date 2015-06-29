@@ -62,6 +62,7 @@
 			a.creator as answerCreator
 		from answer a
 		left join question q on q.id = a.question_id
+		and q.id is not null
 		order by questionCreateDate desc
 	</select>
 	<select id="queryValidQuestionCount" resultClass="java.lang.Integer">

@@ -45,13 +45,16 @@
 			<td class="lv11" scope="col" align="left" valign="middle" width="637">
 				版权所有（C）赤峰市第二医院 地址：赤峰市长青街中段路北1号 邮编：024000 
 				<a href="javascript:void(0)" target="_blank" class="lv11">管理</a><br/>
-				急救中心：0476-8221221 院办：0476-8227717 投诉电话：0476-8226145 蒙ICP备05046990号<br/>
+				急救中心：0476-8221221 院办：0476-8227717 投诉电话：0476-8226145<br/>
+				蒙ICP备05046990号 内卫网审[2010]第0600055号<br/>
 				制作维护：<a href="javascript:void(0)" target="_blank" class="lv11">赤峰市第二医院</a>
 				电话：0476-8228629 &nbsp;&nbsp;&nbsp;&nbsp;
 				<a href="${contextPath}/cms/login" target="_self" class="lv11">后台登陆</a>
 				</td>
-			<th scope="col" align="left" valign="middle" width="314">
-			<img src="${contextPath}/images/eryuan/001.gif" height="69" width="274" /></th>
+				<th scope="col" align="left" valign="middle" width="314">
+			<img src="${contextPath}/images/eryuan/001.gif" height="69" width="274" />
+			<script type="text/javascript">document.write(unescape("%3Cspan id='_ideConac' %3E%3C/span%3E%3Cscript src='http://dcs.conac.cn/js/07/132/0387/40914220/CA071320387409142200001.js' type='text/javascript'%3E%3C/script%3E"));</script>
+			</th>
 		</tr>
 	</tbody>
 </table>
